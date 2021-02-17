@@ -1,3 +1,12 @@
+
+SELECT department_id, name FROM department 
+
+
+
+
+
+
+
 CREATE SEQUENCE seq_employee_id;
 
 CREATE TABLE employee (

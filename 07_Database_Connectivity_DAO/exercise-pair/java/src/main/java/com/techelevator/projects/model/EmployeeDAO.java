@@ -53,3 +53,5 @@ public interface EmployeeDAO {
 	 */
 	public void changeEmployeeDepartment(Long employeeId, Long departmentId);			
 }
+
+

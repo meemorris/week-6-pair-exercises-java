@@ -30,3 +30,14 @@ public interface ProjectDAO {
 	 */
 	public void addEmployeeToProject(Long projectId, Long employeeId);
 }
+
+
+//from_date and to_date are allowed to be null. to_date could be null, but having a from_date be null doesn't make sense
+//write a query to give me all of the active projects
+/*
+SELECT project_id, name, from_date, to_date
+FROM project
+WHERE NOW() BETWEEN from_date AND to_date (both filled in and we're in the middle)
+OR NOW() > from_date AND to_date IS NULL (the project has started but has an unknown end date)
+--this gives you a list of projects, use that NOW() just as a regular variable
+ */

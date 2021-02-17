@@ -75,7 +75,7 @@ public class ProjectsCLI {
 		this.menu = new Menu(System.in, System.out);
 		
 		BasicDataSource dataSource = new BasicDataSource();
-		dataSource.setUrl("jdbc:postgresql://localhost:5432/projects");
+		dataSource.setUrl("jdbc:postgresql://localhost:5432/projects2");
 		dataSource.setUsername("postgres");
 		dataSource.setPassword("postgres1");
 		
