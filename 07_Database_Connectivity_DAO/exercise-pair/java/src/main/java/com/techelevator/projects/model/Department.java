@@ -1,8 +1,5 @@
 package com.techelevator.projects.model;
 
-import com.techelevator.projects.model.jdbc.JDBCDepartmentDAO;
-import org.springframework.jdbc.support.rowset.SqlRowSet;
-
 public class Department {
 
 	private Long id;

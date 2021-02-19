@@ -1,4 +1,4 @@
-package com.techelevator.projects.model.jdbc;
+package com.techelevator.projects.jdbc;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -17,7 +17,7 @@ public class JDBCProjectDAO implements ProjectDAO {
 	private JdbcTemplate jdbcTemplate;
 
 	public JDBCProjectDAO(DataSource dataSource) {
-		this.jdbcTemplate = new JdbcTemplate(dataSource);
+		jdbcTemplate = new JdbcTemplate(dataSource);
 	}
 	
 	@Override
@@ -57,6 +57,16 @@ public class JDBCProjectDAO implements ProjectDAO {
 		}
 		return theProject;
 	}
+
+	public Project createProject(Project newProject) {
+		String sqlInsertProject = "INSERT INTO project(name, from_date, to_date) " +
+				" VALUES (?, '2021-02-16', '2021-04-16') RETURNING project_id";
+		Long id = jdbcTemplate.queryForObject(sqlInsertProject, Long.class, newProject.getName());
+		newProject.setId(id);
+		return newProject;
+	}
+
+
 
 	//from_date and to_date are allowed to be null. to_date could be null, but having a from_date be null doesn't make sense
 //write a query to give me all of the active projects

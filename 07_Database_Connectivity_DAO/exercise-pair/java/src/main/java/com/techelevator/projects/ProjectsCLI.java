@@ -11,9 +11,9 @@ import com.techelevator.projects.model.Employee;
 import com.techelevator.projects.model.EmployeeDAO;
 import com.techelevator.projects.model.Project;
 import com.techelevator.projects.model.ProjectDAO;
-import com.techelevator.projects.model.jdbc.JDBCDepartmentDAO;
-import com.techelevator.projects.model.jdbc.JDBCEmployeeDAO;
-import com.techelevator.projects.model.jdbc.JDBCProjectDAO;
+import com.techelevator.projects.jdbc.JDBCDepartmentDAO;
+import com.techelevator.projects.jdbc.JDBCEmployeeDAO;
+import com.techelevator.projects.jdbc.JDBCProjectDAO;
 import com.techelevator.projects.view.Menu;
 
 public class ProjectsCLI {

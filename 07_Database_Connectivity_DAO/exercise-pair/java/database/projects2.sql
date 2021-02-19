@@ -1,9 +1,30 @@
 
-SELECT department_id, name FROM department 
+SELECT department_id, name FROM department ORDER BY department_id; 
+
+
+SELECT first_name, last_name FROM employee WHERE first_name ILIKE '%m%' AND last_name ILIKE '%m%' AND first_name IS NOT NULL AND last_name IS NOT NULL;
+
+SELECT employee.employee_id, department_id, first_name, last_name, birth_date, gender, hire_date 
+FROM employee  
+LEFT JOIN project_employee ON project_employee.employee_id = employee.employee_id
+WHERE project_employee.employee_id IS NULL;
+
+
+SELECT project_id, name, from_date, to_date
+FROM project
+WHERE NOW() BETWEEN from_date AND to_date
+OR NOW() > from_date AND to_date IS NULL;
 
 
 
 
+
+SELECT employee.employee_id, department_id, first_name, last_name, birth_date, gender, hire_date 
+FROM employee  
+JOIN project_employee ON project_employee.employee_id = employee.employee_id
+WHERE project_employee.project_id = 5;
+
+UPDATE employee SET department_id = 4 WHERE employee_id = 4;
 
 
 

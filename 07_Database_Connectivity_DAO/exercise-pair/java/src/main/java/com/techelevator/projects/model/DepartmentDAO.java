@@ -26,7 +26,7 @@ public interface DepartmentDAO {
 	 * 
 	 * @param updatedDepartment the department object to update
 	 */
-	public void saveDepartment(Department updatedDepartment);
+	public Department saveDepartment(Department updatedDepartment);
 
 	/**
 	 * Inserts a new department into the datastore.

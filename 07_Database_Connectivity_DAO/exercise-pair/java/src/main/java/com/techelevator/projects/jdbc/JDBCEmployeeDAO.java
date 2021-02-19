@@ -1,4 +1,4 @@
-package com.techelevator.projects.model.jdbc;
+package com.techelevator.projects.jdbc;
 
 import com.techelevator.projects.model.Employee;
 import com.techelevator.projects.model.Employee;
@@ -8,6 +8,7 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.rowset.SqlRowSet;
 
 import javax.sql.DataSource;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -110,4 +111,23 @@ public class JDBCEmployeeDAO implements EmployeeDAO {
 		theEmployee.setHireDate(results.getDate("hire_date").toLocalDate());
 		return theEmployee;
 	}
+
+	public void hireEmployee(Employee newEmployee) {
+		String sql = "INSERT INTO employee(employee_id, department_id, first_name, last_name, birth_date, gender, hire_date) " +
+				"VALUES(?,?,?,?,?,?,?)";
+		newEmployee.setId(getNextEmployeeId());
+		jdbcTemplate.update(sql, newEmployee.getId(), newEmployee.getDepartmentId(), newEmployee.getFirstName(), newEmployee.getLastName(), newEmployee.getBirthDay(), newEmployee.getGender(), newEmployee.getHireDate());
+	}
+
+	public long getNextEmployeeId() {
+		String sqlGetNextId = "SELECT nextval('seq_employee_id')";
+		SqlRowSet results = jdbcTemplate.queryForRowSet(sqlGetNextId);
+		if (results.next()) {
+			return results.getLong(1);
+		} else {
+			throw new RuntimeException("Something went wrong while getting an id for the new department");
+		}
+	}
+
+
 }
