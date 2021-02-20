@@ -29,4 +29,10 @@ public class JDBCReservationDAOTests extends BaseDAOTests {
         assertEquals(reservationCreated, 1);
     }
 
+    @Test
+    public void test_get_upcoming_reservations() {
+        List<Reservation> upcomingFor99 = dao.getAllUpcomingReservations(99);
+        assertEquals(2, upcomingFor99.size());
+    }
+
 }

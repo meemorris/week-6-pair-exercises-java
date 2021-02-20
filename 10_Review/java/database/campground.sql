@@ -1,5 +1,21 @@
 -- database name: campground;
 
+SELECT park_id, name, location, establish_date, area, visitors, description
+FROM park
+ORDER BY name;
+
+SELECT park.park_id, reservation_id, reservation.site_id, reservation.name, from_date, to_date, create_date
+FROM reservation
+JOIN site ON reservation.site_id = site.site_id
+JOIN campground ON campground.campground_id = site.campground_id
+WHERE from_date BETWEEN NOW() AND NOW() + interval '30 day'
+AND park_id = ?
+
+
+
+
+
+
 DROP TABLE IF EXISTS reservation;
 DROP TABLE IF EXISTS site;
 DROP TABLE IF EXISTS campground;
