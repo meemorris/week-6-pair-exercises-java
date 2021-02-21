@@ -21,7 +21,9 @@ public class JDBCReservationDAO implements ReservationDAO {
 
     @Override
     public int createReservation(int siteId, String name, LocalDate fromDate, LocalDate toDate) {
-        return -1;
+        String sql = "INSERT INTO reservation (site_id, name, from_date, to_date)" +
+        " VALUES (?, ?, ?, ?)";
+        return  jdbcTemplate.update(sql, siteId, name, fromDate, toDate);
     }
 
     @Override
